@@ -120,19 +120,6 @@ You can pass a query parameter `&hide=` to hide any specific stats with comma-se
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=anuraghazra&hide=contribs,prs)
 ```
 
-### Adding private contributions count to total commits count
-
-You can add the count of all your private contributions to the total commits count by using the query parameter `&count_private=true`.
-
-> **Note**
-> If you are deploying this project yourself, the private contributions will be counted by default. If you are using the public Vercel instance, you need to choose to [share your private contributions](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/managing-contribution-settings-on-your-profile/showing-your-private-contributions-and-achievements-on-your-profile).
-
-> Options: `&count_private=true`
-
-```md
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=anuraghazra&count_private=true)
-```
-
 ### Showing icons
 
 To enable icons, you can pass `&show_icons=true` in the query param, like so:
@@ -283,7 +270,7 @@ You can provide multiple comma-separated values in the bg_color option to render
 -   `rank_icon` - Shows alternative rank icon (i.e. `github` or `default`). Default: `default`.
 -   `show_icons` - _(boolean)_. Default: `false`.
 -   `include_all_commits` - Count total commits instead of just the current year commits _(boolean)_. Default: `false`.
--   `count_private` - Count private commits _(boolean)_. Default: `false`.
+-   `count_private` - Count private contributions _(boolean)_. Default: `false`.
 -   `line_height` - Sets the line height between text _(number)_. Default: `25`.
 -   `exclude_repo` - Exclude stars from specified repositories _(Comma-separated values)_. Default: `[] (blank array)`.
 -   `custom_title` - Sets a custom title for the card. Default:  `<username> GitHub Stats`.
@@ -303,7 +290,7 @@ You can provide multiple comma-separated values in the bg_color option to render
 
 -   `hide` - Hide the languages specified from the card _(Comma-separated values)_. Default: `[] (blank array)`.
 -   `hide_title` - _(boolean)_. Default: `false`.
--   `layout` - Switch between four available layouts `normal` & `compact` & `donut` & `pie`. Default: `normal`.
+-   `layout` - Switch between five available layouts `normal` & `compact` & `donut` & `donut-vertical` & `pie`. Default: `normal`.
 -   `card_width` - Set the card's width manually _(number)_. Default `300`.
 -   `langs_count` - Show more languages on the card, between 1-10 _(number)_. Default `5`.
 -   `exclude_repo` - Exclude specified repositories _(Comma-separated values)_. Default: `[] (blank array)`.
@@ -431,6 +418,14 @@ You can use the `&layout=donut` option to change the card design.
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra&layout=donut)](https://github.com/anuraghazra/github-readme-stats)
 ```
 
+### Donut Vertical Chart Language Card Layout
+
+You can use the `&layout=donut-vertical` option to change the card design.
+
+```md
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra&layout=donut-vertical)](https://github.com/anuraghazra/github-readme-stats)
+```
+
 ### Pie Chart Language Card Layout
 
 You can use the `&layout=pie` option to change the card design.
@@ -458,6 +453,10 @@ You can use the `&hide_progress=true` option to hide the percentages and the pro
 -   Donut Chart layout
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra&layout=donut)](https://github.com/anuraghazra/github-readme-stats)
+
+-   Donut Vertical Chart layout
+
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra&layout=donut-vertical)](https://github.com/anuraghazra/github-readme-stats)
 
 -   Pie Chart layout
 
