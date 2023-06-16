@@ -6,6 +6,8 @@ import { encodeHTML } from "./common/utils.js";
  * @param {string} name The name of the locale.
  * @param {string} apostrophe Whether to use apostrophe or not.
  * @returns {Object} The locales object.
+ *
+ * @see https://www.andiamo.co.uk/resources/iso-language-codes/ for language codes.
  */
 const statCardLocales = ({ name, apostrophe }) => {
   const encodedName = encodeHTML(name);
@@ -195,6 +197,36 @@ const statCardLocales = ({ name, apostrophe }) => {
       uz: "Hissa qoʻshgan (o'tgan yili)",
       vi: "Đã Đóng Góp (năm ngoái)",
       se: "Bidragit till (förra året)",
+    },
+    "statcard.reviews": {
+      ar: "تمت مراجعة إجمالي العلاقات العامة",
+      cn: "審查的 PR 總數",
+      "zh-tw": "审查的 PR 总数",
+      cs: "Celkový počet PR",
+      de: "Insgesamt überprüfte PRs",
+      en: "Total PRs reviewed",
+      bn: "সর্বমোট পুনরালোচনা করা PR",
+      es: "PR totales revisados",
+      fr: "Nombre total de PR examinés",
+      hu: "Összes ellenőrzött PR",
+      it: "PR totali esaminati",
+      ja: "レビューされた PR の総数",
+      kr: "검토된 총 PR",
+      nl: "Totaal beoordeelde PR's",
+      "pt-pt": "Total de PRs revistos",
+      "pt-br": "Total de PRs revisados",
+      np: "कुल पीआर समीक्षित",
+      el: "Σύνολο Αναθεωρημένων PR",
+      ru: "Всего pull request`ов проверено",
+      "uk-ua": "Всього pull request`iв перевірено",
+      id: "Total PR yang Direview",
+      my: "Jumlah PR Dikaji Semula",
+      sk: "Celkový počet PR",
+      tr: "İncelenen toplam PR",
+      pl: "Łącznie sprawdzonych PR",
+      uz: "Koʻrib chiqilgan PR-lar soni",
+      vi: "Tổng Số PR Đã Xem Xét",
+      se: "Totalt antal granskade PR",
     },
   };
 };
@@ -418,10 +450,10 @@ const isLocaleAvailable = (locale) => {
 };
 
 export {
-  isLocaleAvailable,
   availableLocales,
-  statCardLocales,
-  repoCardLocales,
+  isLocaleAvailable,
   langCardLocales,
+  repoCardLocales,
+  statCardLocales,
   wakatimeCardLocales,
 };

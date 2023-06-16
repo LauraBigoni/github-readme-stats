@@ -235,15 +235,15 @@ You can use [GitHub's new media feature](https://github.blog/changelog/2022-05-1
 
 ```html
 <picture>
-<source
-  srcset="https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true&theme=dark"
-  media="(prefers-color-scheme: dark)"
-/>
-<source
-  srcset="https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true"
-  media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
-/>
-<img src="https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true" />
+  <source
+    srcset="https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true&theme=dark"
+    media="(prefers-color-scheme: dark)"
+  />
+  <source
+    srcset="https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true"
+    media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+  />
+  <img src="https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true" />
 </picture>
 ```
 
@@ -306,6 +306,7 @@ You can provide multiple comma-separated values in the bg_color option to render
 -   `disable_animations` - Disables all animations in the card _(boolean)_. Default: `false`.
 -   `ring_color` - Color of the rank circle _(hex color)_. Defaults to the theme ring color if it exists and otherwise the title color.
 -   `number_format` - Switch between two available formats for displaying the card values `short` (i.e. `6.6k`) and `long` (i.e. `6626`). Default: `short`.
+-   `show_total_reviews` - Show total PR reviews _(boolean)_. Default: `false`.
 
 > **Note**
 > When hide_rank=`true`, the minimum card width is 270 px + the title length and padding.
@@ -634,7 +635,7 @@ Since the GitHub API only allows 5k requests per hour, my `https://github-readme
 ## On other platforms
 
 > **Warning**
-> This way of using GRS is not officially supported and was added to cater to some particular use cases where Vercel could not be used (e.g. #2341). The support for this method, therefore, is limited.
+> This way of using GRS is not officially supported and was added to cater to some particular use cases where Vercel could not be used (e.g. [#2341](https://github.com/anuraghazra/github-readme-stats/discussions/2341)). The support for this method, therefore, is limited.
 
 <details>
 <summary><b>:hammer_and_wrench: Step-by-step guide for deploying on other platforms</b></summary>
