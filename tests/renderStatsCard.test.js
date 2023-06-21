@@ -17,8 +17,10 @@ const stats = {
   totalIssues: 300,
   totalPRs: 400,
   totalReviews: 50,
+  totalDiscussionsStarted: 10,
+  totalDiscussionsAnswered: 50,
   contributedTo: 500,
-  rank: { level: "A+", score: 40 },
+  rank: { level: "A+", percentile: 40 },
 };
 
 describe("Test renderStatsCard", () => {
@@ -42,6 +44,12 @@ describe("Test renderStatsCard", () => {
 
     // Default hidden stats
     expect(queryByTestId(document.body, "reviews")).not.toBeInTheDocument();
+    expect(
+      queryByTestId(document.body, "discussions_started"),
+    ).not.toBeInTheDocument();
+    expect(
+      queryByTestId(document.body, "discussions_answered"),
+    ).not.toBeInTheDocument();
   });
 
   it("should have proper name apostrophe", () => {
@@ -73,16 +81,18 @@ describe("Test renderStatsCard", () => {
     expect(queryByTestId(document.body, "prs")).toBeNull();
     expect(queryByTestId(document.body, "contribs")).toBeNull();
     expect(queryByTestId(document.body, "reviews")).toBeNull();
+    expect(queryByTestId(document.body, "discussions_started")).toBeNull();
+    expect(queryByTestId(document.body, "discussions_answered")).toBeNull();
   });
 
-  it("should show total reviews", () => {
+  it("should show additional stats", () => {
     document.body.innerHTML = renderStatsCard(stats, {
-      show_total_reviews: true,
+      show: ["reviews", "discussions_started", "discussions_answered"],
     });
 
     expect(
       document.body.getElementsByTagName("svg")[0].getAttribute("height"),
-    ).toBe("220");
+    ).toBe("270");
 
     expect(queryByTestId(document.body, "stars")).toBeDefined();
     expect(queryByTestId(document.body, "commits")).toBeDefined();
@@ -90,6 +100,8 @@ describe("Test renderStatsCard", () => {
     expect(queryByTestId(document.body, "prs")).toBeDefined();
     expect(queryByTestId(document.body, "contribs")).toBeDefined();
     expect(queryByTestId(document.body, "reviews")).toBeDefined();
+    expect(queryByTestId(document.body, "discussions_started")).toBeDefined();
+    expect(queryByTestId(document.body, "discussions_answered")).toBeDefined();
   });
 
   it("should hide_rank", () => {
@@ -404,5 +416,19 @@ describe("Test renderStatsCard", () => {
       rank_icon: "github",
     });
     expect(queryByTestId(document.body, "github-rank-icon")).toBeDefined();
+  });
+
+  it("should show the rank percentile", () => {
+    document.body.innerHTML = renderStatsCard(stats, {
+      rank_icon: "percentile",
+    });
+    expect(queryByTestId(document.body, "percentile-top-header")).toBeDefined();
+    expect(
+      queryByTestId(document.body, "percentile-top-header").textContent.trim(),
+    ).toBe("Top");
+    expect(queryByTestId(document.body, "rank-percentile-text")).toBeDefined();
+    expect(
+      queryByTestId(document.body, "percentile-rank-value").textContent.trim(),
+    ).toBe(stats.rank.percentile.toFixed(1) + "%");
   });
 });
