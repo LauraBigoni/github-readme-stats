@@ -33,7 +33,7 @@ const RANK_ONLY_CARD_DEFAULT_WIDTH = 290;
  * @param {number} createTextNodeParams.shiftValuePos Number of pixels the value has to be shifted to the right.
  * @param {boolean} createTextNodeParams.bold Whether to bold the label.
  * @param {string} createTextNodeParams.number_format The format of numbers on card.
- * @returns
+ * @returns {string} The stats card text item SVG object.
  */
 const createTextNode = ({
   icon,
@@ -77,11 +77,11 @@ const createTextNode = ({
 /**
  * Renders the stats card.
  *
- * @param {Partial<import('../fetchers/types').StatsData>} stats The stats data.
+ * @param {import('../fetchers/types').StatsData} stats The stats data.
  * @param {Partial<import("./types").StatCardOptions>} options The card options.
  * @returns {string} The stats card SVG object.
  */
-const renderStatsCard = (stats = {}, options = {}) => {
+const renderStatsCard = (stats, options = {}) => {
   const {
     name,
     totalStars,
