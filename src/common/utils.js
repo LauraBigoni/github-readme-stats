@@ -396,7 +396,12 @@ const measureText = (str, fontSize = 10) => {
   );
 };
 
-/** @param {string} name */
+/**
+ * Lowercase and trim string.
+ *
+ * @param {string} name String to lowercase and trim.
+ * @returns {string} Lowercased and trimmed string.
+ */
 const lowercaseTrim = (name) => name.toLowerCase().trim();
 
 /**
@@ -437,10 +442,11 @@ const parseEmojis = (str) => {
 };
 
 /**
- * Get diff in minutes
- * @param {Date} d1
- * @param {Date} d2
- * @returns {number}
+ * Get diff in minutes between two dates.
+ *
+ * @param {Date} d1 First date.
+ * @param {Date} d2 Second date.
+ * @returns {number} Number of minutes between the two dates.
  */
 const dateDiff = (d1, d2) => {
   const date1 = new Date(d1);
