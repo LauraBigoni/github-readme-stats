@@ -28,6 +28,7 @@ const RANK_ONLY_CARD_DEFAULT_WIDTH = 290;
  * @param {string} createTextNodeParams.label The label to display.
  * @param {number} createTextNodeParams.value The value to display.
  * @param {string} createTextNodeParams.id The id of the stat.
+ * @param {string=} createTextNodeParams.unitSymbol The unit symbol of the stat.
  * @param {number} createTextNodeParams.index The index of the stat.
  * @param {boolean} createTextNodeParams.showIcons Whether to show icons.
  * @param {number} createTextNodeParams.shiftValuePos Number of pixels the value has to be shifted to the right.
@@ -40,6 +41,7 @@ const createTextNode = ({
   label,
   value,
   id,
+  unitSymbol,
   index,
   showIcons,
   shiftValuePos,
@@ -69,16 +71,21 @@ const createTextNode = ({
         x="${(showIcons ? 140 : 120) + shiftValuePos}"
         y="12.5"
         data-testid="${id}"
-      >${kValue}</text>
+      >${kValue}${unitSymbol ? ` ${unitSymbol}` : ""}</text>
     </g>
   `;
 };
 
 /**
+ * @typedef {import('../fetchers/types').StatsData} StatsData
+ * @typedef {import('./types').StatCardOptions} StatCardOptions
+ */
+
+/**
  * Renders the stats card.
  *
- * @param {import('../fetchers/types').StatsData} stats The stats data.
- * @param {Partial<import("./types").StatCardOptions>} options The card options.
+ * @param {StatsData} stats The stats data.
+ * @param {Partial<StatCardOptions>} options The card options.
  * @returns {string} The stats card SVG object.
  */
 const renderStatsCard = (stats, options = {}) => {
@@ -88,6 +95,8 @@ const renderStatsCard = (stats, options = {}) => {
     totalCommits,
     totalIssues,
     totalPRs,
+    totalPRsMerged,
+    mergedPRsPercentage,
     totalReviews,
     totalDiscussionsStarted,
     totalDiscussionsAnswered,
@@ -166,6 +175,25 @@ const renderStatsCard = (stats, options = {}) => {
     id: "prs",
   };
 
+  if (show.includes("prs_merged")) {
+    STATS.prs_merged = {
+      icon: icons.prs_merged,
+      label: i18n.t("statcard.prs-merged"),
+      value: totalPRsMerged,
+      id: "prs_merged",
+    };
+  }
+
+  if (show.includes("prs_merged_percentage")) {
+    STATS.prs_merged_percentage = {
+      icon: icons.prs_merged_percentage,
+      label: i18n.t("statcard.prs-merged-percentage"),
+      value: mergedPRsPercentage.toFixed(2),
+      id: "prs_merged_percentage",
+      unitSymbol: "%",
+    };
+  }
+
   if (show.includes("reviews")) {
     STATS.reviews = {
       icon: icons.reviews,
@@ -214,6 +242,7 @@ const renderStatsCard = (stats, options = {}) => {
     "ru",
     "uk-ua",
     "id",
+    "ml",
     "my",
     "pl",
     "de",
@@ -229,7 +258,11 @@ const renderStatsCard = (stats, options = {}) => {
     .map((key, index) =>
       // create the text nodes, and pass index so that we can calculate the line spacing
       createTextNode({
-        ...STATS[key],
+        icon: STATS[key].icon,
+        label: STATS[key].label,
+        value: STATS[key].value,
+        id: STATS[key].id,
+        unitSymbol: STATS[key].unitSymbol,
         index,
         showIcons: show_icons,
         shiftValuePos: 79.01 + (isLongLocale ? 50 : 0),

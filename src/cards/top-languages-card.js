@@ -662,13 +662,18 @@ const renderDonutLayout = (langs, width, totalLanguageSize) => {
 };
 
 /**
+ * @typedef {import("./types").TopLangOptions} TopLangOptions
+ * @typedef {TopLangOptions["layout"]} Layout
+ */
+
+/**
  * Creates the no languages data SVG node.
  *
  * @param {object} props Object with function properties.
  * @param {string} props.color No languages data text color.
  * @param {string} props.text No languages data translated text.
- * @param {import("./types").TopLangOptions["layout"] | undefined} props.layout Card layout.
- * @return {string} No languages data SVG node string.
+ * @param {Layout | undefined} props.layout Card layout.
+ * @returns {string} No languages data SVG node string.
  */
 const noLanguagesDataNode = ({ color, text, layout }) => {
   return `
@@ -682,9 +687,9 @@ const noLanguagesDataNode = ({ color, text, layout }) => {
  * Get default languages count for provided card layout.
  *
  * @param {object} props Function properties.
- * @param {import("./types").TopLangOptions["layout"]=} props.layout Input layout string.
+ * @param {Layout=} props.layout Input layout string.
  * @param {boolean=} props.hide_progress Input hide_progress parameter value.
- * @return {number} Default languages count for input layout.
+ * @returns {number} Default languages count for input layout.
  */
 const getDefaultLanguagesCountByLayout = ({ layout, hide_progress }) => {
   if (layout === "compact" || hide_progress === true) {
@@ -701,16 +706,20 @@ const getDefaultLanguagesCountByLayout = ({ layout, hide_progress }) => {
 };
 
 /**
+ * @typedef {import('../fetchers/types').TopLangData} TopLangData
+ */
+
+/**
  * Renders card that display user's most frequently used programming languages.
  *
- * @param {import('../fetchers/types').TopLangData} topLangs User's most frequently used programming languages.
- * @param {Partial<import("./types").TopLangOptions>} options Card options.
+ * @param {TopLangData} topLangs User's most frequently used programming languages.
+ * @param {Partial<TopLangOptions>} options Card options.
  * @returns {string} Language card SVG object.
  */
 const renderTopLanguages = (topLangs, options = {}) => {
   const {
     hide_title = false,
-    hide_border,
+    hide_border = false,
     card_width,
     title_color,
     text_color,
