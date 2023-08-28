@@ -41,7 +41,7 @@
     ·
     <a href="https://github.com/anuraghazra/github-readme-stats/discussions/1770">FAQ</a>
     ·
-    <a href="https://github.com/anuraghazra/github-readme-stats/discussions">Ask Question</a>
+    <a href="https://github.com/anuraghazra/github-readme-stats/discussions/new?category=q-a">Ask Question</a>
   </p>
   <p align="center">
     <a href="/docs/readme_fr.md">Français </a>
@@ -577,7 +577,7 @@ Change the `?username=` value to your [Wakatime](https://wakatime.com) username.
 
 *   Showing additional stats
 
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=anuraghazra\&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage)
+![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=anuraghazra\&show_icons=true\&show=reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage)
 
 *   Showing icons
 
